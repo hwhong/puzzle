@@ -34,3 +34,28 @@ export const ART_WORKS = [
   "the_great_wave_off_kanagawa",
   "composition_with_red_yellow_and_blue",
 ];
+
+export const pprint = (name: string) => {
+  return name.replace(/_/g, " ").toUpperCase();
+};
+
+export function getTextWidth(text: string): number | undefined {
+  // re-use canvas object for better performance
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  if (context) {
+    context.font = getCanvasFont();
+    const metrics = context.measureText(text);
+    return metrics.width;
+  }
+
+  return undefined;
+}
+
+function getCanvasFont() {
+  const fontWeight = "700";
+  const fontSize = "48px";
+  const fontFamily = "__Inter_2d22c6";
+
+  return `${fontWeight} ${fontSize} ${fontFamily}`;
+}

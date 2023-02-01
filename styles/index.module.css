@@ -3,10 +3,35 @@
   height: 100vh;
 }
 
-.square {
-  width: 100px;
-  height: 100px;
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
 
-  background-color: blue;
-  color: white;
+.list > * {
+  margin: 4px;
+}
+
+.nameWrapper {
+  position: relative;
+}
+
+.name {
+  font-size: 48px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.name:hover {
+  color: #0b99ff;
+}
+
+.content {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  background-color: teal;
 }
