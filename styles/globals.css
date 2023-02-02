@@ -85,7 +85,9 @@ body {
   overflow-x: hidden;
 }
 
-body {
+#image {
+  width: 250px;
+  height: 250px;
 }
 
 a {

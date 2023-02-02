@@ -80,7 +80,7 @@ export default function Home() {
                 onMouseMove={onMouseMove}
                 // onMouseEnter={() => setHoverId(w)}
                 // onMouseLeave={() => setHoverId(undefined)}
-                data-hover-content={`<div className={styles.content}> <Image className={styles.content} src=${`/${w}.png`} alt={hoverId} width={150} height={150} /> </div>`}
+                data-hover-content={`<div> <Image id=\"image\" src=${`/${w}.png`} alt={hoverId} width={150} height={150} /> </div>`}
               >
                 {pprint(w)}
               </a>
@@ -88,7 +88,6 @@ export default function Home() {
           );
         })}
       </div>
-      <Image src="/cabeza.png" alt="de" width={250} height={250} />
     </div>
   );
 }
