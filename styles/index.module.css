@@ -6,7 +6,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 100px 20px;
 }
 
 .list > * {
@@ -27,31 +27,6 @@
 .name:hover {
   color: #0b99ff;
 }
-
-/* .content {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  left: -150px;
-  background-color: white;
-  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
-  width: auto;
-}
-
-.content:before {
-  position: absolute;
-  z-index: -1;
-  transition-duration: 0.3s;
-  transition-property: transform;
-}
-
-.nameWrapper:hover .content {
-  z-index: 10;
-  opacity: 1;
-  visibility: visible;
-  transform: translate(0, -20px);
-  transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
-} */
 
 .content {
   width: 150px;

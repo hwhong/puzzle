@@ -1,14 +1,16 @@
 import { ART_WORKS } from "@/utils/helper";
 import Draggable from "@/components/draggable";
-import { Inter } from "@next/font/google";
 import { useEffect, useRef } from "react";
-import styles from "../styles/index.module.css";
+import styles from "../styles/puzzle.module.css";
 import { useRouter } from "next/router";
 
-const SIZE = 100;
-const X_INCREMENTS = 100;
-const Y_INCREMENTS = 20;
-const TOTAL_PIECES = 25;
+const TOTAL_LENGTH = 500;
+const SIDE = 4;
+
+const SIZE = TOTAL_LENGTH / SIDE;
+const X_INCREMENTS = SIZE;
+const Y_INCREMENTS = SIZE;
+const TOTAL_PIECES = 16;
 
 export default function Puzzle() {
   const router = useRouter();
@@ -19,8 +21,8 @@ export default function Puzzle() {
   useEffect(() => {
     const initItems = () => {
       if (itemsRef.current[0]) {
-        for (let y = 0; y < 5; y++) {
-          for (let x = 0; x < 5; x++) {
+        for (let y = 0; y < SIDE; y++) {
+          for (let x = 0; x < SIDE; x++) {
             const ctx = itemsRef.current[y * 5 + x]?.getContext("2d");
             if (ctx) {
               // prettier-ignore
@@ -73,7 +75,7 @@ export default function Puzzle() {
 }
 
 export async function getStaticProps() {
-  return {};
+  return { props: {} };
 }
 
 export async function getStaticPaths() {
