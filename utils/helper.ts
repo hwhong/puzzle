@@ -4,7 +4,7 @@ export const ART_WORKS = [
   "the_channel_at_gravelines_evening",
   "maman",
   "composition",
-  "near_ washington_square",
+  "near_washington_square",
   "christina's_world",
   "the_moon",
   "icons",

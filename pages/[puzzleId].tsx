@@ -1,4 +1,9 @@
-import { ART_WORKS, calculateMargin, shuffleArray } from "@/utils/helper";
+import {
+  ART_WORKS,
+  calculateMargin,
+  pprint,
+  shuffleArray,
+} from "@/utils/helper";
 import Draggable from "@/components/draggable";
 import { useEffect, useRef, useState } from "react";
 import styles from "../styles/puzzle.module.css";
@@ -69,6 +74,12 @@ export default function Puzzle() {
         <Link href="/">
           <p className={classNames(styles.back, inter.className)}>Back</p>
         </Link>
+        <div className={classNames(styles.artName, inter.className)}>
+          {pprint(puzzleId as string).toLowerCase()}
+        </div>
+        <button className={classNames(styles.downloadButton, inter.className)}>
+          Download
+        </button>
       </div>
       <div className={styles.primaryContent}>
         <div className={styles.piecesWrapper}>
