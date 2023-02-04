@@ -79,3 +79,9 @@ export const shuffleArray = (array: any[]) => {
 
   return array;
 };
+
+export const calculateMargin = (innerWidth: number, pieceWidth: number) => {
+  return (
+    (Math.ceil((innerWidth - pieceWidth * 4) / pieceWidth) / 2) * pieceWidth
+  );
+};

@@ -1,6 +1,6 @@
-import { ART_WORKS, shuffleArray } from "@/utils/helper";
+import { ART_WORKS, calculateMargin, shuffleArray } from "@/utils/helper";
 import Draggable from "@/components/draggable";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../styles/puzzle.module.css";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -22,6 +22,8 @@ const TOTAL_PIECES = 16;
 export default function Puzzle() {
   const router = useRouter();
   const itemsRef = useRef<HTMLCanvasElement[]>([]);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [margin, setMargin] = useState(0);
 
   const { puzzleId } = router.query;
 
@@ -40,7 +42,7 @@ export default function Puzzle() {
               );
 
               // x is starting, d is destination
-              //drawImage(image,
+              // drawImage(image,
               // sx, sy, sw, sh,
               // dx, dy, dw, dh);
             }
@@ -52,16 +54,17 @@ export default function Puzzle() {
     itemsRef.current = itemsRef.current.slice(0, TOTAL_PIECES);
 
     const image = document.createElement("img");
-
     image.setAttribute("src", `/${puzzleId}.png`);
-
     image.addEventListener("load", () => {
       initItems();
     });
+    if (rootRef.current) {
+      setMargin(calculateMargin(rootRef.current.offsetWidth, SIZE));
+    }
   }, [itemsRef, puzzleId]);
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} ref={rootRef}>
       <div className={styles.top}>
         <Link href="/">
           <p className={classNames(styles.back, inter.className)}>Back</p>
@@ -90,7 +93,12 @@ export default function Puzzle() {
             ))
           )}
         </div>
-        <div className={styles.canvasWrapper}>
+        <div
+          className={styles.canvasWrapper}
+          style={{
+            marginLeft: margin,
+          }}
+        >
           <div className={styles.canvas}>
             {Array.from(Array(TOTAL_PIECES).keys()).map((i) => (
               <div key={i} className={styles.outline}></div>
