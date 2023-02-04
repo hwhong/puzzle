@@ -1,10 +1,69 @@
 .root {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  /* min-height: 60px;
+  border-bottom: 1px solid #d4d4d4; */
 }
 
 .piecesWrapper {
-  max-height: 100vh;
+  display: flex;
+  max-width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 125px);
   overflow: auto;
-  /* flex-flow: wrap; */
+}
+
+.primaryContent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.draggable {
+  height: 125px;
+}
+
+.canvasWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -11111;
+}
+
+.canvas {
+  width: 500px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(4, 125px);
+  background-color: transparent;
+}
+
+.outline {
+  border: 1px solid #d4d4d4;
+  width: 125px;
+  height: 125px;
+  background-color: transparent;
+}
+
+.outline:not(:nth-child(4n)) {
+  border-right: none;
+}
+
+.outline:nth-child(n + 5) {
+  border-top: none;
+}
+
+.pictureWrapper {
+  position: relative;
+}
+
+.exampleImage {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }

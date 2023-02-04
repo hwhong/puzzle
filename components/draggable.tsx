@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 import styles from "../styles/draggable.module.css";
 
@@ -14,6 +15,7 @@ interface DraggableState {
 }
 
 interface Props {
+  className?: string;
   onDragStart?: () => void;
   onDragEnd?: () => void;
   onDrag?: (value: { translateX: number; translateY: number }) => void;
@@ -140,13 +142,13 @@ export default class Draggable extends React.Component<Props, DraggableState> {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, className } = this.props;
     const { translateX, translateY, isDragging } = this.state;
     const dragStyle = isDragging ? { opacity: 0.8, cursor: "grabbing" } : {};
     return (
       <div
         onMouseDown={this.handleMouseDown}
-        className={styles.root}
+        className={classNames(styles.root, className)}
         style={{
           transform: `translate(
                 ${translateX}px, ${translateY}px)`,

@@ -1,8 +1,9 @@
-import { ART_WORKS } from "@/utils/helper";
+import { ART_WORKS, shuffleArray } from "@/utils/helper";
 import Draggable from "@/components/draggable";
 import { useEffect, useRef } from "react";
 import styles from "../styles/puzzle.module.css";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const TOTAL_LENGTH = 500;
 const SIDE = 4;
@@ -23,7 +24,7 @@ export default function Puzzle() {
       if (itemsRef.current[0]) {
         for (let y = 0; y < SIDE; y++) {
           for (let x = 0; x < SIDE; x++) {
-            const ctx = itemsRef.current[y * 5 + x]?.getContext("2d");
+            const ctx = itemsRef.current[y * 4 + x]?.getContext("2d");
             if (ctx) {
               // prettier-ignore
               ctx.drawImage(
@@ -53,23 +54,47 @@ export default function Puzzle() {
 
   return (
     <div className={styles.root}>
-      {Array.from(Array(TOTAL_PIECES).keys()).map((i) => (
-        <Draggable
-          xIncrements={X_INCREMENTS}
-          yIncrements={Y_INCREMENTS}
-          key={i}
-        >
-          <canvas
-            ref={(el) => {
-              if (itemsRef.current && el) {
-                itemsRef.current[i] = el;
-              }
-            }}
-            width={SIZE}
-            height={SIZE}
+      <div className={styles.top}></div>
+      <div className={styles.primaryContent}>
+        <div className={styles.piecesWrapper}>
+          {shuffleArray(
+            Array.from(Array(TOTAL_PIECES).keys()).map((i) => (
+              <Draggable
+                xIncrements={X_INCREMENTS}
+                yIncrements={Y_INCREMENTS}
+                className={styles.draggable}
+                key={i}
+              >
+                <canvas
+                  ref={(el) => {
+                    if (itemsRef.current && el) {
+                      itemsRef.current[i] = el;
+                    }
+                  }}
+                  width={SIZE}
+                  height={SIZE}
+                />
+              </Draggable>
+            ))
+          )}
+        </div>
+        <div className={styles.canvasWrapper}>
+          <div className={styles.canvas}>
+            {Array.from(Array(TOTAL_PIECES).keys()).map((i) => (
+              <div key={i} className={styles.outline}></div>
+            ))}
+          </div>
+        </div>
+        <div className={styles.pictureWrapper}>
+          <Image
+            src={`/${puzzleId}.png`}
+            width={250}
+            height={250}
+            alt="example"
+            className={styles.exampleImage}
           />
-        </Draggable>
-      ))}
+        </div>
+      </div>
     </div>
   );
 }
