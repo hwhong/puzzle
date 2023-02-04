@@ -144,7 +144,13 @@ export default class Draggable extends React.Component<Props, DraggableState> {
   render() {
     const { children, className } = this.props;
     const { translateX, translateY, isDragging } = this.state;
-    const dragStyle = isDragging ? { opacity: 0.8, cursor: "grabbing" } : {};
+    const dragStyle = isDragging
+      ? {
+          opacity: 0.8,
+          cursor: "grabbing",
+          filter: "drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5))",
+        }
+      : {};
     return (
       <div
         onMouseDown={this.handleMouseDown}
