@@ -5,9 +5,10 @@
   flex-direction: column;
 }
 
-.top {
-  /* min-height: 60px;
-  border-bottom: 1px solid #d4d4d4; */
+.primaryContent {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 
 .piecesWrapper {
@@ -16,12 +17,7 @@
   height: auto;
   display: grid;
   grid-template-columns: repeat(3, 125px);
-  overflow: auto;
-}
-
-.primaryContent {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  position: absolute;
 }
 
 .draggable {
@@ -32,7 +28,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -11111;
+  width: 100%;
+  height: 100%;
 }
 
 .canvas {
@@ -41,6 +38,7 @@
   display: grid;
   grid-template-columns: repeat(4, 125px);
   background-color: transparent;
+  box-sizing: content-box;
 }
 
 .outline {
@@ -48,6 +46,7 @@
   width: 125px;
   height: 125px;
   background-color: transparent;
+  box-sizing: content-box;
 }
 
 .outline:not(:nth-child(4n)) {
@@ -56,10 +55,6 @@
 
 .outline:nth-child(n + 5) {
   border-top: none;
-}
-
-.pictureWrapper {
-  position: relative;
 }
 
 .exampleImage {

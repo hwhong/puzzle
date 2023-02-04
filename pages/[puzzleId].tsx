@@ -54,7 +54,6 @@ export default function Puzzle() {
 
   return (
     <div className={styles.root}>
-      <div className={styles.top}></div>
       <div className={styles.primaryContent}>
         <div className={styles.piecesWrapper}>
           {shuffleArray(
@@ -85,15 +84,13 @@ export default function Puzzle() {
             ))}
           </div>
         </div>
-        <div className={styles.pictureWrapper}>
-          <Image
-            src={`/${puzzleId}.png`}
-            width={250}
-            height={250}
-            alt="example"
-            className={styles.exampleImage}
-          />
-        </div>
+        <Image
+          src={`/${puzzleId}.png`}
+          width={250}
+          height={250}
+          alt="example"
+          className={styles.exampleImage}
+        />
       </div>
     </div>
   );
