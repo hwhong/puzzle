@@ -5,6 +5,23 @@
   flex-direction: column;
 }
 
+.top {
+  height: 60px;
+  border-bottom: 1px solid #d4d4d4;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.back {
+  padding: 4px 20px;
+  background-color: #ededed;
+  border-radius: 8px;
+  font-size: 20px;
+  width: fit-content;
+  color: #696969;
+}
+
 .primaryContent {
   position: relative;
   height: 100%;

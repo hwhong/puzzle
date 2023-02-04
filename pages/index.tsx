@@ -74,7 +74,17 @@ export default function Home() {
       <div className={styles.list}>
         {ART_WORKS.map((w) => {
           return (
-            <Link href={`/${w}`} key={w}>
+            <Link
+              href={`/${w}`}
+              key={w}
+              onClick={() => {
+                const elements =
+                  document.querySelectorAll(`[data-hover-wrapper]`);
+                elements.forEach((e) => {
+                  e.remove();
+                });
+              }}
+            >
               <div key={w} className={styles.nameWrapper}>
                 <a
                   className={classNames(inter.className, styles.name)}

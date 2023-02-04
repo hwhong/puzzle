@@ -4,6 +4,11 @@ import { useEffect, useRef } from "react";
 import styles from "../styles/puzzle.module.css";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
+import { Inter } from "@next/font/google";
+import classNames from "classnames";
+
+const inter = Inter({ subsets: ["latin"], weight: "700" });
 
 // changes with global variable pieze-size
 const TOTAL_LENGTH = 400;
@@ -57,6 +62,11 @@ export default function Puzzle() {
 
   return (
     <div className={styles.root}>
+      <div className={styles.top}>
+        <Link href="/">
+          <p className={classNames(styles.back, inter.className)}>Back</p>
+        </Link>
+      </div>
       <div className={styles.primaryContent}>
         <div className={styles.piecesWrapper}>
           {shuffleArray(
