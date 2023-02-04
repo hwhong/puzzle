@@ -16,37 +16,33 @@
   max-width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: repeat(3, 125px);
+  grid-template-columns: repeat(3, var(--piece-size));
   position: absolute;
 }
 
 .draggable {
-  height: 125px;
+  height: var(--piece-size);
 }
 
 .canvasWrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  margin: var(--piece-size) 0 auto calc(var(--piece-size) * 4);
 }
 
 .canvas {
-  width: 500px;
-  height: 500px;
+  width: calc(var(--piece-size) * 4);
+  height: calc(var(--piece-size) * 4);
   display: grid;
-  grid-template-columns: repeat(4, 125px);
+  grid-template-columns: repeat(4, var(--piece-size));
   background-color: transparent;
   box-sizing: content-box;
 }
 
 .outline {
   border: 1px solid #d4d4d4;
-  width: 125px;
-  height: 125px;
   background-color: transparent;
-  box-sizing: content-box;
 }
 
 .outline:not(:nth-child(4n)) {

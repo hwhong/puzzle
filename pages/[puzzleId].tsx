@@ -5,7 +5,8 @@ import styles from "../styles/puzzle.module.css";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-const TOTAL_LENGTH = 500;
+// changes with global variable pieze-size
+const TOTAL_LENGTH = 400;
 const SIDE = 4;
 
 const SIZE = TOTAL_LENGTH / SIDE;
@@ -24,7 +25,7 @@ export default function Puzzle() {
       if (itemsRef.current[0]) {
         for (let y = 0; y < SIDE; y++) {
           for (let x = 0; x < SIDE; x++) {
-            const ctx = itemsRef.current[y * 4 + x]?.getContext("2d");
+            const ctx = itemsRef.current[y * SIDE + x]?.getContext("2d");
             if (ctx) {
               // prettier-ignore
               ctx.drawImage(
@@ -46,7 +47,9 @@ export default function Puzzle() {
     itemsRef.current = itemsRef.current.slice(0, TOTAL_PIECES);
 
     const image = document.createElement("img");
+
     image.setAttribute("src", `/${puzzleId}.png`);
+
     image.addEventListener("load", () => {
       initItems();
     });
