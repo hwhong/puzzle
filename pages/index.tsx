@@ -69,22 +69,19 @@ export default function Home() {
     return `position: fixed; left: ${ e.clientX - wrapper?.offsetWidth! / 2 }px; top:${top};`;
   };
 
+  const onLinkClicked = () => {
+    const elements = document.querySelectorAll(`[data-hover-wrapper]`);
+    elements.forEach((e) => {
+      e.remove();
+    });
+  };
+
   return (
     <div className={styles.root}>
       <div className={styles.list}>
         {ART_WORKS.map((w) => {
           return (
-            <Link
-              href={`/${w}`}
-              key={w}
-              onClick={() => {
-                const elements =
-                  document.querySelectorAll(`[data-hover-wrapper]`);
-                elements.forEach((e) => {
-                  e.remove();
-                });
-              }}
-            >
+            <Link href={`/${w}`} key={w} onClick={onLinkClicked}>
               <div key={w} className={styles.nameWrapper}>
                 <a
                   className={classNames(inter.className, styles.name)}
